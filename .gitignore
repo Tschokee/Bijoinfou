@@ -163,8 +163,8 @@ pip-log.txt
 .DS_Store
 
 #valami
-.exe
-.o
-.vcxproj
-.vcxproj.filter
-.sln
+*.exe
+*.o
+*.vcxproj
+*.vcxproj.filters
+*.sln
