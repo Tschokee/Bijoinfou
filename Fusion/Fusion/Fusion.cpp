@@ -6,7 +6,7 @@
 
 //Global variables
 //Hali
-FILE *genes,*fusion; 
+FILE *genes,*fusion;
 //Beni
 
 //Tschokee
@@ -21,7 +21,9 @@ char *concater(int i){
 }
 char *otherstring(int i){
 	char* buffer = (char*)malloc(1024);
-	 buffer="ATGTCGT";
+	fgets(buffer,i,fusion);
+	//while( fgets(buffer,i,fusion) != NULL);
+	 //buffer="ATGTCGT";
 	return buffer;
 }
 
@@ -33,11 +35,11 @@ bool algorithm(char *concated, char *string){
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//genes = fopen ("genes.txt" , "r");
-	//fusion = fopen ("fusion.txt" , "r");
+	fusion = fopen ("fusion.txt" , "r");
 	printf("%d   %s   %s \n",algorithm(concater(6),otherstring(6*2)),concater(6),otherstring(6*2));
 
 
 
-	return 0;
+	return EXIT_SUCCESS;
 }
 
