@@ -165,3 +165,5 @@ pip-log.txt
 #valami
 .exe
 .o
+.vcxproj
+.vcxproj.filter
