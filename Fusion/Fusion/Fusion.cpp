@@ -4,6 +4,16 @@
 #include "stdafx.h"
 
 
+//Global variables
+//Hali
+FILE *genes,*fusion; 
+//Beni
+
+//Tschokee
+
+//Juri
+
+
 char *concater(int i){
 	char* buffer = (char*)malloc(1024);
 	buffer="ATGTCGT";
@@ -22,9 +32,9 @@ bool algorithm(char *concated, char *string){
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-
-
-	printf("%d/n",algorithm(concater(6),otherstring(6*2)));
+	//genes = fopen ("genes.txt" , "r");
+	//fusion = fopen ("fusion.txt" , "r");
+	printf("%d   %s   %s \n",algorithm(concater(6),otherstring(6*2)),concater(6),otherstring(6*2));
 
 
 
