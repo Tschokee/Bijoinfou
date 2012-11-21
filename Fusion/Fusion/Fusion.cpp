@@ -39,7 +39,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("%d   %s   %s \n",algorithm(concater(6),otherstring(6*2)),concater(6),otherstring(6*2));
 
 
-
+    fclose(fusion);
 	return EXIT_SUCCESS;
 }
 
