@@ -2,7 +2,9 @@
 //
 
 #include "stdafx.h"
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 //Global variables
 //Hali
@@ -11,38 +13,56 @@ FILE *genes,*fusion;
 
 //Tschokee
 struct idAndGenes{
-    char* id;
+    char id[11];
     char* gene;
 };
-idAndGenes *fusionGene;
+idAndGenes g;
 //Juri
 
 
 char *concater(int i){
-	char* buffer = (char*)malloc(1024);
+	char* buffer = (char*)malloc(i*sizeof(char));
 	buffer="ATGTCGT";
 	return buffer;
 }
-char *otherstring(int i){
-	char* buffer = (char*)malloc(1024);
-	fgets(buffer,i,fusion);
+void otherstring(int i){
+    char c;
+	//char* buffer = (char*)malloc(i*sizeof(char));
+	fgets(g.id, 10 , fusion);
+	free(g.gene);
+	g.gene = (char*)malloc(1000*sizeof(char));
+	fgetc(fusion);
+    fgets(g.gene, 1000 , fusion);
+	/*for(int j = 0 ; ; j++)//realloc-al nem akar mûködni valamiért olyat foglal le amit nem kéne
+	{
+	    c = fgetc(fusion);
+	    if( c == '\n' || c == '*')
+        {
+            printf("megall\n");
+            break;
+        }
+        realloc(g.gene, sizeof(char));
+        g.gene[j] = c;
+        //printf("%c",g.gene[j]);
+	}
 	//while( fgets(buffer,i,fusion) != NULL);
-	 //buffer="ATGTCGT";
-	return buffer;
+	//buffer="ATGTCGT";
+	//return g.gene;
+	//printf("%s\n",g.gene);*/
+	return;
 }
 
 
 bool algorithm(char *concated, char *string){
-	return true;
+    //amíg nincsenek struktúrák nem tudom elkezdeni
+    return true;
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//genes = fopen ("genes.txt" , "r");
 	fusion = fopen ("Acralc1.fasta" , "r");
-	printf("%d   %s   %s \n",algorithm(concater(6),otherstring(6*2)),concater(6),otherstring(6*2));
-
-
+	otherstring(6*2);
     fclose(fusion);
 	return EXIT_SUCCESS;
 }
