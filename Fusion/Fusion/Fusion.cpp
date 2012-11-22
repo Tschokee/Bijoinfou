@@ -10,7 +10,11 @@ FILE *genes,*fusion;
 //Beni
 
 //Tschokee
-
+struct idAndGenes{
+    char* id;
+    char* gene;
+};
+idAndGenes *fusionGene;
 //Juri
 
 
@@ -35,7 +39,7 @@ bool algorithm(char *concated, char *string){
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//genes = fopen ("genes.txt" , "r");
-	fusion = fopen ("fusion.txt" , "r");
+	fusion = fopen ("Acralc1.fasta" , "r");
 	printf("%d   %s   %s \n",algorithm(concater(6),otherstring(6*2)),concater(6),otherstring(6*2));
 
 
