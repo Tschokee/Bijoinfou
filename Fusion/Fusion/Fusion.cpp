@@ -17,8 +17,24 @@ struct idAndGenes{
     char* gene;
 };
 idAndGenes g;
+idAndGenes dataBase[100000];
 //Juri
 
+void load(){ // még nem megy jól, van valami gond a fájlformátummal
+    int i=0;
+    while(1){
+        if( fgets(dataBase[i].id, 10 , fusion)==NULL)
+            break;
+        //printf("%s --- " , dataBase[i].id);
+        free(dataBase[i].gene);
+        dataBase[i].gene = (char*)malloc(10000*sizeof(char));
+        fgetc(fusion);
+        fgets(dataBase[i].gene, 10000 , fusion);
+        //printf("%s\n" , dataBase[i].gene);
+        i++;
+    }
+    return;
+}
 
 char *concater(int i){
 	char* buffer = (char*)malloc(i*sizeof(char));
@@ -62,6 +78,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	//genes = fopen ("genes.txt" , "r");
 	fusion = fopen ("Acralc1.fasta" , "r");
+	load();
 	otherstring(6*2);
     fclose(fusion);
 	return EXIT_SUCCESS;
