@@ -26,7 +26,8 @@ namespace FusionGene
     {
 
         int Deviation { get; set; }
-        bool StopItOrNot { get; set; }
+        //public static bool StopItOrNot { get; set; }
+        int Counter { get; set; }
 
         public MainWindow()
         {
@@ -35,10 +36,13 @@ namespace FusionGene
 
         private void button5_Click(object sender, RoutedEventArgs e)
         {
-            StopItOrNot = true;
+            Counter = 0;
+            //StopItOrNot = true;
             StreamWriter writer = new StreamWriter(textBox3.Text + "\\Output.txt");
             GeneDatabase g1 = new GeneDatabase(textBox1.Text);
             GeneDatabase g2 = new GeneDatabase(textBox2.Text);
+            Window1 w = new Window1();
+            w.Show();
             for (int i = 0; i < g1.count() - 1; i++)
             {
                 for (int j = i + 1; j < g1.count(); j++)
@@ -48,21 +52,19 @@ namespace FusionGene
                         if (Algoritmus.algorithm(g1.getGene(i).getGeneString(), g1.getGene(j).getGeneString(), g2.getGene(k).getGeneString(), Deviation))
                         {
                             writer.WriteLine(g2.getGene(k).getId() + " : " + g1.getGene(i).getId() + " , " + g1.getGene(j).getId());
+                            Counter++;
                         }
-                        if (!StopItOrNot)
-                        {
-                            System.Windows.MessageBox.Show("Stopped by user!");
-                            writer.Close();
-                            return;
-                        }
+                        //if (!StopItOrNot)
+                        //{
+                        //    System.Windows.MessageBox.Show("Stopped by user!");
+                        //    writer.Close();
+                        //    return;
+                        //}
                     }
                 }
             }
-            //			Application.EnableVisualStyles();
-            //			Application.SetCompatibleTextRenderingDefault(false);
-            //			Application.Run(new MainForm());
-            //Algoritmus.algorithm();
-            System.Windows.MessageBox.Show("Fusion gene searshing is ready!");
+            
+            System.Windows.MessageBox.Show("Fusion gene searching is ready!" + Counter + " gene(s) were found!");
             writer.Close();
         }
 
@@ -136,11 +138,6 @@ namespace FusionGene
         private void button6_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
-        }
-
-        private void button7_Click(object sender, RoutedEventArgs e)
-        {
-            StopItOrNot = false;
         }
     }
 }
