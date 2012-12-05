@@ -25,9 +25,9 @@ namespace FusionGene
 		[STAThread]
 		private static void Main(string[] args)
 		{
-			StreamWriter writer = new StreamWriter("Output.txt");
-			GeneDatabase g1 = new GeneDatabase("ACLA.fasta");
-			GeneDatabase g2 = new GeneDatabase("AGOS1.fasta");
+			StreamWriter writer = new StreamWriter("C:\\Users\\Ben\\Documents\\GitHub\\Bijoinfou\\Output.txt");
+			GeneDatabase g1 = new GeneDatabase("C:\\Users\\Ben\\Documents\\GitHub\\Bijoinfou\\ACLA.fasta");
+			GeneDatabase g2 = new GeneDatabase("C:\\Users\\Ben\\Documents\\GitHub\\Bijoinfou\\AGOS1.fasta");
 			for(int i = 0 ; i < g1.count() - 1 ; i++)
 			{
 				for(int j = i + 1 ; j < g1.count() ; j++)
