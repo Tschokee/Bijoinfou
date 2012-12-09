@@ -41,8 +41,10 @@ namespace FusionGene
             StreamWriter writer = new StreamWriter(textBox3.Text + "\\Output.txt");
             GeneDatabase g1 = new GeneDatabase(textBox1.Text);
             GeneDatabase g2 = new GeneDatabase(textBox2.Text);
-            Window1 w = new Window1();
-            w.Show();
+            Deviation = Convert.ToInt32(textBox4.Text);
+            /*Window1 w = new Window1();
+            w.Show();*/
+            System.Windows.MessageBox.Show("Work in progress!");
             for (int i = 0; i < g1.count() - 1; i++)
             {
                 for (int j = i + 1; j < g1.count(); j++)
@@ -54,24 +56,20 @@ namespace FusionGene
                             writer.WriteLine(g2.getGene(k).getId() + " : " + g1.getGene(i).getId() + " , " + g1.getGene(j).getId());
                             Counter++;
                         }
+                        
                         //if (!StopItOrNot)
                         //{
                         //    System.Windows.MessageBox.Show("Stopped by user!");
                         //    writer.Close();
-                        //    return;
                         //}
                     }
                 }
             }
             
-            System.Windows.MessageBox.Show("Fusion gene searching is ready!" + Counter + " gene(s) were found!");
+            System.Windows.MessageBox.Show("Fusion gene searching finished! " + Counter + " gene(s) were found!");
             writer.Close();
         }
 
-        private void button4_Click(object sender, RoutedEventArgs e)
-        {
-            Deviation = Convert.ToInt32(textBox4.Text);
-        }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
