@@ -122,5 +122,13 @@
 			Click="button6_Click"
 			Canvas.Left="416"
 			Canvas.Top="276" />
+		<Button
+			Width="75"
+			Height="23"
+			Canvas.Top="276"
+			Canvas.Left="316"
+			Content="Stop"
+			Name="button4"
+			Click="button4_Click" />
 	</Canvas>
 </Window>

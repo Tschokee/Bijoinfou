@@ -16,18 +16,60 @@ using System.IO;
 using FusionGeneDatabase;
 using FusionGene;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace FusionGene
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+    public class algorithm
+	{
+    	string s1 {get;set;}
+    	string s2 {get;set;}
+    	string s3 {get;set;}
+    	string s4 {get;set;}
+    	public algorithm(string p1, string p2, string p3, string p4)
+    	{
+    		s1 = p1;
+    		s2 = p2;
+    		s3 = p3;
+    		s4 = p4;
+    	}
+    	
+		
+        public void futtat()
+        {
+        	int Deviation, Counter;
+        	Counter = 0;
+        	StreamWriter writer = new StreamWriter(s3 + "\\Output.txt");
+        	GeneDatabase g1 = new GeneDatabase(s1);
+        	GeneDatabase g2 = new GeneDatabase(s2);
+        	Deviation = Convert.ToInt32(s4);
+        	
+        	for (int i = 0; i < g1.count() - 1; i++)
+        	{
+        		for (int j = i + 1; j < g1.count(); j++)
+        		{
+        			for (int k = 0; k < g2.count(); k++)
+        			{
+        				if (Algoritmus.algorithm(g1.getGene(i).getGeneString(), g1.getGene(j).getGeneString(), g2.getGene(k).getGeneString(), Deviation))
+        				{
+        					writer.WriteLine(g2.getGene(k).getId() + " : " + g1.getGene(i).getId() + " , " + g1.getGene(j).getId());
+        					Counter++;
+        				}
+        			}
+        		}
+        	}
+        	System.Windows.MessageBox.Show("Fusion gene searching finished! " + Counter + " gene(s) were found!");
+        	writer.Close();
+        }
+	}
+    
     public partial class MainWindow : Window
     {
-
-        int Deviation { get; set; }
-        //public static bool StopItOrNot { get; set; }
-        int Counter { get; set; }
+    	Thread thr;
 
         public MainWindow()
         {
@@ -36,38 +78,10 @@ namespace FusionGene
 
         private void button5_Click(object sender, RoutedEventArgs e)
         {
-            Counter = 0;
-            //StopItOrNot = true;
-            StreamWriter writer = new StreamWriter(textBox3.Text + "\\Output.txt");
-            GeneDatabase g1 = new GeneDatabase(textBox1.Text);
-            GeneDatabase g2 = new GeneDatabase(textBox2.Text);
-            Deviation = Convert.ToInt32(textBox4.Text);
-            /*Window1 w = new Window1();
-            w.Show();*/
             System.Windows.MessageBox.Show("Work in progress!");
-            for (int i = 0; i < g1.count() - 1; i++)
-            {
-                for (int j = i + 1; j < g1.count(); j++)
-                {
-                    for (int k = 0; k < g2.count(); k++)
-                    {
-                        if (Algoritmus.algorithm(g1.getGene(i).getGeneString(), g1.getGene(j).getGeneString(), g2.getGene(k).getGeneString(), Deviation))
-                        {
-                            writer.WriteLine(g2.getGene(k).getId() + " : " + g1.getGene(i).getId() + " , " + g1.getGene(j).getId());
-                            Counter++;
-                        }
-                        
-                        //if (!StopItOrNot)
-                        //{
-                        //    System.Windows.MessageBox.Show("Stopped by user!");
-                        //    writer.Close();
-                        //}
-                    }
-                }
-            }
-            
-            System.Windows.MessageBox.Show("Fusion gene searching finished! " + Counter + " gene(s) were found!");
-            writer.Close();
+            algorithm a = new algorithm(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
+            thr = new Thread( new ThreadStart(a.futtat));            
+            thr.Start();
         }
 
 
@@ -137,5 +151,10 @@ namespace FusionGene
         {
             System.Windows.Application.Current.Shutdown();
         }
+		
+		void button4_Click(object sender, RoutedEventArgs e)
+		{
+			thr.Abort();
+		}
     }
 }
