@@ -51,12 +51,12 @@ namespace FusionGene
         	Deviation = Convert.ToInt32(s4);
         	
         	for (int i = 0; i < g1.count() - 1; i++)
-        	{
+        	{lb.Content = i+"/"+g1.count().ToString();
         		for (int j = i + 1; j < g1.count(); j++)
         		{
         			for (int k = 0; k < g2.count(); k++)
                     {
-                        lb.Content = k+"/"+g2.count().ToString();
+                        
         				if (Algoritmus.algorithm(g1.getGene(i).getGeneString(), g1.getGene(j).getGeneString(), g2.getGene(k).getGeneString(), Deviation))
         				{
         					writer.WriteLine(g2.getGene(k).getId() + " : " + g1.getGene(i).getId() + " , " + g1.getGene(j).getId());
