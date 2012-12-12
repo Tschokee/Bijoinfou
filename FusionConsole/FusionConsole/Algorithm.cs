@@ -40,13 +40,19 @@ namespace FusionConsole
 
             for (int i = 0; i < g1.count() - 1; i++)
             {
-                System.Console.Clear();
-                System.Console.WriteLine(i + "\\" + g1.count());
+                
+                
                 for (int j = i + 1; j < g1.count(); j++)
                 {
+                   
                     for (int k = 0; k < g2.count(); k++)
                     {
-                        
+                        System.Console.Clear();
+                        System.Console.WriteLine("Fusion Genes found: " + Counter);
+                        System.Console.WriteLine(i + "\\" + g1.count());
+                        System.Console.WriteLine(j + "\\" + g1.count());
+                        System.Console.WriteLine(k + "\\" + g2.count());
+                   
                        
                         if (Algoritmus.algorithm(g1.getGene(i).getGeneString(), g1.getGene(j).getGeneString(), g2.getGene(k).getGeneString(), Deviation))
                         {
