@@ -40,7 +40,7 @@ namespace FusionConsole
 
             for (int i = 0; i < g1.count() - 1; i++)
             {
-                
+
                 
                 for (int j = i + 1; j < g1.count(); j++)
                 {
