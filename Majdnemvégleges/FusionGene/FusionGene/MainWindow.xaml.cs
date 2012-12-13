@@ -24,20 +24,21 @@ namespace FusionGene
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
+    
+    
     public class algorithm 
 	{
     	string s1 {get;set;}
     	string s2 {get;set;}
     	string s3 {get;set;}
     	string s4 {get;set;}
-        System.Windows.Controls.Label lb;
-    	public algorithm(string p1, string p2, string p3, string p4, System.Windows.Controls.Label lb)
+
+    	public algorithm(string p1, string p2, string p3, string p4)
     	{
     		s1 = p1;
     		s2 = p2;
     		s3 = p3;
     		s4 = p4;
-            this.lb = lb;
     	}
     	
 		
@@ -51,7 +52,7 @@ namespace FusionGene
         	Deviation = Convert.ToInt32(s4);
         	
         	for (int i = 0; i < g1.count() - 1; i++)
-        	{lb.Content = i+"/"+g1.count().ToString();
+        	{
         		for (int j = i + 1; j < g1.count(); j++)
         		{
         			for (int k = 0; k < g2.count(); k++)
@@ -82,7 +83,7 @@ namespace FusionGene
         private void button5_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.MessageBox.Show("Work in progress!");
-            algorithm a = new algorithm(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text,progress);
+            algorithm a = new algorithm(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
             thr = new Thread( new ThreadStart(a.futtat));  
             
             thr.Start();

@@ -130,7 +130,5 @@
 			Content="Stop"
 			Name="button4"
 			Click="button4_Click" />
-        <Label Content="Progress:" Height="35" Canvas.Left="182" Canvas.Top="175" Width="107"/>
-        <Label Name="progress" Content="0/0&#xD;&#xA;" Height="40" Canvas.Left="214" Canvas.Top="199" Width="164"/>
-    </Canvas>
+	</Canvas>
 </Window>
